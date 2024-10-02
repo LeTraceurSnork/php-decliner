@@ -1,0 +1,27 @@
+{
+    "name": "letraceursnork/php-decliner",
+    "description": "This repository offers a PHP-based solution for declension of nouns by grammatical cases along with numerals. It ensures correct noun forms based on case (nominative, genitive, etc.) and the numeral used, handling the specific rules of declension in supported languages.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "LTS\\PhpDecliner\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "LeTraceurSnork",
+            "email": "le_traceur_snork@mail.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.12",
+        "friendsofphp/php-cs-fixer": "^3.64"
+    },
+    "scripts": {
+        "phpstan": "@php ./vendor/bin/phpstan analyze -c ./phpstan.neon --no-progress --ansi --verbose",
+        "php-cs-fixer-fix": "@php ./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php"
+    }
+}
