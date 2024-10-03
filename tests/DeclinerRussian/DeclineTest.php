@@ -1,5 +1,7 @@
 <?php
 
+namespace LTS\PhpDecliner\Tests\DeclinerRussian;
+
 use LTS\PhpDecliner\DeclinerRussian;
 use PHPUnit\Framework\TestCase;
 
@@ -37,9 +39,19 @@ class DeclineTest extends TestCase
         $this->assertEquals('книги', DeclinerRussian::decline(3, $words));
         $this->assertEquals('книги', DeclinerRussian::decline(4, $words));
 
+        // Проверка для чисел, оканчивающихся на 5-19
+        for ($i = 5; $i < 20; $i++) {
+            $this->assertEquals('книг', DeclinerRussian::decline($i, $words));
+        }
+
         // Проверка для чисел 21, 31 и т.д. (правила как для числительных оканчивающихся на 1)
         $this->assertEquals('книга', DeclinerRussian::decline(21, $words));
         $this->assertEquals('книга', DeclinerRussian::decline(101, $words));
+
+        // Проверка для чисел, оканчивающихся на 0
+        for ($i = 0; $i <= 10; $i++) {
+            $this->assertEquals('книг', DeclinerRussian::decline($i * 10, $words));
+        }
     }
 
     /**
@@ -47,11 +59,11 @@ class DeclineTest extends TestCase
      *
      * @return void
      */
-    public function testNonDeclinableWords():void
+    public function testNonDeclinableWords(): void
     {
         $words = ['пальто'];
 
-        for($i = 0; $i < 25; $i++) {
+        for ($i = 0; $i < 25; $i++) {
             $this->assertEquals('пальто', DeclinerRussian::decline($i, $words));
         }
     }

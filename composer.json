@@ -7,6 +7,11 @@
             "LTS\\PhpDecliner\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "LTS\\PhpDecliner\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "LeTraceurSnork",
